@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-=======
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>>>>>> bb407ee24410feeacc1726f295ca426f7b00f866
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,7 +24,7 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:text="Choose a category"
-        android:textSize="30dp"></TextView>
+        android:textSize="30dp" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -35,23 +32,14 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center">
 
-<<<<<<< HEAD
         <Button
             android:layout_width="800dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:text="Players"
             android:textSize="30dp"
-            android:onClick="startGame"></Button>
-=======
-    <Button
-        android:layout_width="800dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:text="Players"
-        android:textSize="30dp"
-        android:onClick="startGame"></Button>
->>>>>>> bb407ee24410feeacc1726f295ca426f7b00f866
+            android:onClick="startGame" />
+
 
         <Button
             android:layout_width="800dp"
@@ -59,7 +47,7 @@
             android:layout_weight="1"
             android:text="Teams"
             android:textSize="30dp"
-            android:onClick="startGame"></Button>
+            android:onClick="startGame" />
 
         <Button
             android:layout_width="800dp"
@@ -67,7 +55,7 @@
             android:layout_weight="1"
             android:text="Games"
             android:textSize="30dp"
-            android:onClick="startGame"></Button>
+            android:onClick="startGame" />
 
     </TableLayout>
 
