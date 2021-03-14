@@ -1,3 +1,6 @@
 include ':app'
+<<<<<<< HEAD
 rootProject.name = "TriviaApp"
+=======
 rootProject.name = "Trivia App"
+>>>>>>> bb407ee24410feeacc1726f295ca426f7b00f866
