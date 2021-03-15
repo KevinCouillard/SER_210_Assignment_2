@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/nba_trivia"
+    tools:context=".GameScreen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category: "
+        android:layout_marginLeft="20dp"
+        android:textSize="50dp"
+        android:textColor="@color/white"
+        android:layout_gravity="left"
+        android:id="@+id/categoryName" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:text="Trivia Question"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:id="@+id/question" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Answer A"
+        android:textSize="20dp"
+        android:id="@+id/answerA"
+        android:onClick="chooseAnswer" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Answer B"
+        android:textSize="20dp"
+        android:id="@+id/answerB"
+        android:onClick="chooseAnswer" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Answer C"
+        android:textSize="20dp"
+        android:id="@+id/answerC"
+        android:onClick="chooseAnswer" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Answer D"
+        android:textSize="20dp"
+        android:id="@+id/answerD"
+        android:onClick="chooseAnswer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:text="Current Score: "
+        android:textColor="@color/white"
+        android:id="@+id/Score" />
+
+
+</LinearLayout>

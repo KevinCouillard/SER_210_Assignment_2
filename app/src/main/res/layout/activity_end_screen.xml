@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/nba_trivia"
     tools:context=".EndScreen"
     android:orientation="vertical">
 
@@ -12,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="You Lose!"
+        android:textColor="@color/white"
         android:textSize="50dp"
         android:layout_marginTop="50dp"
         />
@@ -21,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Your Score: "
+        android:textColor="@color/white"
         android:textSize="30dp"
         android:layout_marginTop="50dp"
         />

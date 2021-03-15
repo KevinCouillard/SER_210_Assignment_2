@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     android:orientation="vertical"
+    android:background="@drawable/basketball_trivia"
     tools:context=".MainActivity">
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_marginRight="20dp"
         android:text="Welcome to NBA Trivia"
         android:textSize="50dp"
+        android:textColor="@color/white"
         android:textAlignment="center" />
 
     <TextView
@@ -24,6 +26,7 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:text="Choose a category"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <TableLayout
