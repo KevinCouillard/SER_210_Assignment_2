@@ -35,6 +35,8 @@ public class GameScreen extends AppCompatActivity {
                 Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
                 startActivity(intent2);
                 break;
+
+
         }
     }
 }
