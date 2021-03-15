@@ -25,11 +25,13 @@ public class EndScreen extends AppCompatActivity {
         switch (id) {
             case R.id.playAgainButton:
                 //go back to screen 2
+                Intent intent = new Intent(EndScreen.this,GameScreen.class);
+                startActivity(intent);
                 break;
             case R.id.changeCategoryButton:
                 //go back to screen 1
-                Intent intent = new Intent(EndScreen.this,MainActivity.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(EndScreen.this,MainActivity.class);
+                startActivity(intent2);
                 break;
         }
     }
