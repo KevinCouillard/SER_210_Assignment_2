@@ -8,12 +8,12 @@ import androidx.appcompat.widget.Toolbar;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    private ActionBar toolbar;
+    //private ActionBar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        toolbar = (ActionBar) getSupportActionBar();
-        setSupportActionBar(toolbar);
+        //toolbar = (ActionBar) getSupportActionBar();
+        setSupportActionBar(findViewById(R.id.toolbar));
     }
 }

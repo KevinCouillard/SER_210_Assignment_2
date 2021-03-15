@@ -12,7 +12,11 @@
         <activity
             android:name=".EndScreen"
             android:label="@string/title_activity_end_screen"
-            android:theme="@style/Theme.TriviaApp.NoActionBar"></activity>
+            android:theme="@style/Theme.TriviaApp"/>
+        <activity
+            android:name=".GameScreen"
+            android:label="GameScreen"
+            android:theme="@style/Theme.TriviaApp" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.Menu;
 import android.view.View;
 
 public class EndScreen extends AppCompatActivity {
@@ -17,7 +18,12 @@ public class EndScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_screen);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.question_options,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     public void buttonPress(View view) {
