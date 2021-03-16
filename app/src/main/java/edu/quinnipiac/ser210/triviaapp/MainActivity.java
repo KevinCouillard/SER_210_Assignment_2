@@ -2,6 +2,7 @@ package edu.quinnipiac.ser210.triviaapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.os.Bundle;
+import androidx.appcompat.widget.ShareActionProvider;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ShareActionProvider provider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu, findViewById(R.id.menu_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -36,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,AboutPage.class);
                 startActivity(intent);
                 //information about the developer
+                break;
+            case R.id.menu_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
+                provider.setShareIntent(intent);
+                startActivity(intent);
                 break;
             default: return super.onOptionsItemSelected(item);
 
