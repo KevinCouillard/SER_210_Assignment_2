@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 //information about the developer
                 break;
             case R.id.menu_share:
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
-                provider.setShareIntent(intent);
-                startActivity(intent);
+                Intent intent2 = new Intent(Intent.ACTION_SEND);
+                intent2.setType("text/plain");
+                intent2.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
+                provider.setShareIntent(intent2);
+                startActivity(intent2);
                 break;
             default: return super.onOptionsItemSelected(item);
 
