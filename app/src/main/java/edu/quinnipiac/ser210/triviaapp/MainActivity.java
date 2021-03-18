@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setSupportActionBar(findViewById(R.id.toolbar));
+        //setSupportActionBar(findViewById(R.id.toolbar));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu, findViewById(R.id.menu_share));
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.change_color:
                 //options to change the background color
+                Utils.changeToTheme(this, 3);
                 break;
             case R.id.info:
                 Intent intent = new Intent(MainActivity.this,AboutPage.class);
