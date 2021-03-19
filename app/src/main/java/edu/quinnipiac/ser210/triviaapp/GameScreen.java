@@ -10,6 +10,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.view.MenuItemCompat;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +28,7 @@ public class GameScreen extends AppCompatActivity {
     String playerTeam;
     String playerHeight;
     String playerPosition;
+    ShareActionProvider provider;
 
 
     @Override
@@ -91,8 +95,6 @@ public class GameScreen extends AppCompatActivity {
             case 0:
                 //set button text to teams
                 int ranCorrect = ((int) (Math.random()*4));
-                Log.v("question Correct", " " + ranCorrect);
-                Log.v("question Position", " " + playerTeam);
                 if (ranCorrect == 0) {
                     answerA.setText(playerTeam);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
@@ -231,9 +233,6 @@ public class GameScreen extends AppCompatActivity {
             case 2:
                 //set button text to players
                 ranCorrect = ((int) (Math.random()*4));
-                Log.v("question Correct", " " + ranCorrect);
-                Log.v("question player", " " + player);
-                ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
                     answerA.setText(player);
                     if (player.contentEquals(hMap.get(ranB).player)) {
@@ -303,8 +302,6 @@ public class GameScreen extends AppCompatActivity {
             case 3:
                 //set button text to position
                 ranCorrect = ((int) (Math.random()*4));
-                Log.v("question Correct", " " + ranCorrect);
-                Log.v("question Position", " " + playerPosition);
                 if (ranCorrect == 0) {
                     answerA.setText(playerPosition);
                     if (playerPosition.contentEquals(hMap.get(ranB).position)) {
