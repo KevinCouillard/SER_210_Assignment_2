@@ -23,6 +23,7 @@ public class EndScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_end_screen);
     }
 
@@ -30,7 +31,7 @@ public class EndScreen extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
         provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -38,20 +39,22 @@ public class EndScreen extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.change_color:
-                //options to change the background color
+                //changes color
+                Utils.changeToTheme(this, (int)(Math.random()*6));
                 break;
             case R.id.info:
+                //information about the developer
                 Intent intent = new Intent(this,AboutPage.class);
                 startActivity(intent);
-                //information about the developer
                 break;
             case R.id.menu_share:
-                Intent intent2 = new Intent(Intent.ACTION_SEND);
-                intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
-                provider.setShareIntent(intent2);
-                startActivity(intent2);
-                break;
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Check it out";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Subject");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                return true;
             default: return super.onOptionsItemSelected(item);
 
         }

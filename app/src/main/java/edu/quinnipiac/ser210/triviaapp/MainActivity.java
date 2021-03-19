@@ -17,8 +17,6 @@ import androidx.appcompat.widget.ShareActionProvider;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ShareActionProvider provider;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -39,19 +36,12 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.change_color:
                 //changes color
-                Utils.changeToTheme(this, (int)(Math.random()*2));
+                Utils.changeToTheme(this, (int)(Math.random()*6));
                 break;
             case R.id.info:
                 Intent intent = new Intent(MainActivity.this,AboutPage.class);
                 startActivity(intent);
                 //information about the developer
-                break;
-            case R.id.menu_share:
-                Intent intent2 = new Intent(Intent.ACTION_SEND);
-                intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
-                provider.setShareIntent(intent2);
-                startActivity(intent2);
                 break;
             default: return super.onOptionsItemSelected(item);
 

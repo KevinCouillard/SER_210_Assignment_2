@@ -21,25 +21,20 @@ import android.view.View;
 
 public class GameScreen extends AppCompatActivity {
 
-    private ActionBar actionBar;
-    private ColorDrawable colorDrawable;
 
-    private ShareActionProvider provider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
 
-        actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
-        colorDrawable = new ColorDrawable(Color.parseColor("#FF5733"));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -49,24 +44,17 @@ public class GameScreen extends AppCompatActivity {
         switch (id) {
             case R.id.change_color:
                 //changes color
-                Utils.changeToTheme(this, (int)(Math.random()*2));
+                Utils.changeToTheme(this, (int)(Math.random()*6));
                 break;
             case R.id.info:
                 Intent intent = new Intent(this,AboutPage.class);
                 startActivity(intent);
-                //information about the developer
-                break;
-            case R.id.menu_share:
-                Intent intent2 = new Intent(Intent.ACTION_SEND);
-                intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
-                provider.setShareIntent(intent2);
-                startActivity(intent2);
                 break;
             default: return super.onOptionsItemSelected(item);
 
         }
         return super.onOptionsItemSelected(item);
-
     }
+
+
 }

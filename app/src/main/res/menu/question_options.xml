@@ -7,16 +7,18 @@
         android:icon="@drawable/ic_launcher_info_foreground"
         app:showAsAction="ifRoom"
         />
+
+    <item android:id="@+id/change_color"
+        android:title="Settings"
+        android:icon="@drawable/ic_launcher_settings"
+        app:showAsAction="ifRoom"
+        />
+
     <item android:id="@+id/menu_share"
         android:title="Share"
         android:icon="@drawable/ic_launcher_share_foreground"
         app:showAsAction="ifRoom"
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
-        />
-    <item android:id="@+id/change_color"
-        android:title="Settings"
-        android:icon="@drawable/ic_launcher_settings"
-        app:showAsAction="ifRoom"
         />
 
 </menu>
