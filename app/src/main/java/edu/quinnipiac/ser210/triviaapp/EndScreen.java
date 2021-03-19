@@ -15,7 +15,6 @@ import androidx.core.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 public class EndScreen extends AppCompatActivity {
 
@@ -31,7 +30,7 @@ public class EndScreen extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu.findItem(R.id.action_share));
         return true;
     }
 
@@ -48,14 +47,12 @@ public class EndScreen extends AppCompatActivity {
                 Intent intent = new Intent(this,AboutPage.class);
                 startActivity(intent);
                 break;
-            case R.id.menu_share:
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            case R.id.action_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Check it out";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Subject");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share via"));
-                return true;
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
+                provider.setShareIntent(sharingIntent);
+                break;
             default: return super.onOptionsItemSelected(item);
 
         }

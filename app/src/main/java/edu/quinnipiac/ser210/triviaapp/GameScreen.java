@@ -385,6 +385,7 @@ public class GameScreen extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu.findItem(R.id.action_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -400,6 +401,12 @@ public class GameScreen extends AppCompatActivity {
                 //information about the developer
                 Intent intent = new Intent(GameScreen.this, AboutPage.class);
                 startActivity(intent);
+                break;
+            case R.id.action_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
+                provider.setShareIntent(sharingIntent);
                 break;
             default: return super.onOptionsItemSelected(item);
 
