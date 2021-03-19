@@ -44,24 +44,17 @@
             android:textSize="30dp"
             android:onClick="startGame" />
 
-
-        <Button
-            android:id="@+id/Teams"
-            android:layout_width="800dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="Teams"
-            android:textSize="30dp"
-            android:onClick="startGame" />
-
-        <Button
-            android:id="@+id/Games"
-            android:layout_width="800dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="Games"
-            android:textSize="30dp"
-            android:onClick="startGame" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Keep playing until you lose!"
+            android:textSize="40dp"
+            android:textColor="@color/white"
+            android:textAlignment="center" />
 
     </TableLayout>
 

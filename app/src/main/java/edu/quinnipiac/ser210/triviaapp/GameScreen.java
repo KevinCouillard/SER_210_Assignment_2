@@ -1,27 +1,21 @@
 package edu.quinnipiac.ser210.triviaapp;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * GameScreen handles trivia questions and answers
+ */
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ShareActionProvider;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuItemCompat;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,8 +25,6 @@ public class GameScreen extends AppCompatActivity {
     String playerTeam;
     String playerHeight;
     String playerPosition;
-    int score;
-    String playerScore = "Current Score: " + score;
 
 
     @Override
@@ -41,18 +33,14 @@ public class GameScreen extends AppCompatActivity {
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
 
-        playerScore = (String) getIntent().getExtras().get("score");
-
-        TextView currentScore = findViewById(R.id.Score);
-        currentScore.setText(playerScore);
-
         questionNum = ((int) (Math.random()*4));
-        String questionString = " " + questionNum;
 
+        //random numbers used to fill false answers from HashMap values
         int ranB = ((int) (Math.random()*20));
         int ranC = ((int) (Math.random()*20));
         int ranD = ((int) (Math.random()*20));
 
+        //HashMap that manually stores 20 players and their values to use as false answers
         HashMap<Integer, Players> hMap = new HashMap<Integer, Players>();
         hMap.put(0, new Players("Antonio Blakeney","Bulls", "G","6'4''"));
         hMap.put(1, new Players("Jonah Bolden","Suns", "F","6'10''"));
@@ -75,23 +63,21 @@ public class GameScreen extends AppCompatActivity {
         hMap.put(18, new Players("Bogdan Bogdanovic","Hawks", "G","6'6''"));
         hMap.put(19, new Players("Damian Jones","Lakers", "C","7'0''"));
 
-
+        //Intent values (api values) passed from MainActivity
         player = (String) getIntent().getExtras().get("player");
         playerTeam = (String) getIntent().getExtras().get("player team");
         String category = (String) getIntent().getExtras().get("category");
         playerHeight = (String) getIntent().getExtras().get("player height");
         playerPosition = (String) getIntent().getExtras().get("player position");
 
-        //Log.v("Height",playerHeight);
-        //Log.v("Position",playerPosition);
-
+        //ArrayList used to hold the questions asked
         ArrayList<String> triviaQuestions = new ArrayList<String>();
         triviaQuestions.add("What team does " + player + " play for?");
         triviaQuestions.add("What height is " + player + "?");
         triviaQuestions.add("What player plays on the " + playerTeam + "?");
         triviaQuestions.add("What position does " + player + " play?");
-        Log.v("Question",triviaQuestions.get(questionNum));
 
+        //Sets the textView displaying the question text to a random question
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(triviaQuestions.get(questionNum));
 
@@ -100,10 +86,13 @@ public class GameScreen extends AppCompatActivity {
         Button answerC = (Button) findViewById(R.id.answerC);
         Button answerD = (Button) findViewById(R.id.answerD);
 
+        //Sets the button text for each question case randomly
         switch (questionNum) {
             case 0:
                 //set button text to teams
                 int ranCorrect = ((int) (Math.random()*4));
+                Log.v("question Correct", " " + ranCorrect);
+                Log.v("question Position", " " + playerTeam);
                 if (ranCorrect == 0) {
                     answerA.setText(playerTeam);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
@@ -241,6 +230,9 @@ public class GameScreen extends AppCompatActivity {
                 break;
             case 2:
                 //set button text to players
+                ranCorrect = ((int) (Math.random()*4));
+                Log.v("question Correct", " " + ranCorrect);
+                Log.v("question player", " " + player);
                 ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
                     answerA.setText(player);
@@ -381,9 +373,7 @@ public class GameScreen extends AppCompatActivity {
                 break;
         }
 
-        Log.v("question number", questionString);
-        Log.v("question playerTeam", playerTeam);
-
+        //sets category name based on category clicked (was more categories now just one)
         TextView categoryName = (TextView) findViewById(R.id.categoryName);
         categoryName.setText(category);
 
@@ -425,13 +415,14 @@ public class GameScreen extends AppCompatActivity {
         Button b2 = findViewById(R.id.answerB);
         Button b3 = findViewById(R.id.answerC);
         Button b4 = findViewById(R.id.answerD);
-        //int score = 0;
-        TextView score = (TextView) findViewById(R.id.Score);
+
         switch (id) {
             case R.id.answerA:
                 switch (questionNum) {
+                    //For some reason only the position registers if the correct answer is chosen (something to do with the check to see if strings are equal b/c position is char not string)
+                    //Have tried b2.getText().toString().equalsIgnoreCase(playerTeam) as well as using .equals and .contentEquals with no luck
                     case 0:
-                        if (playerTeam.contentEquals(b1.getText())) {
+                        if (playerPosition.contentEquals(b1.getText())) {
                             Intent intent = new Intent(GameScreen.this, MainActivity.class);
                             startActivity(intent);
                         } else {
@@ -467,7 +458,7 @@ public class GameScreen extends AppCompatActivity {
             case R.id.answerB:
                 switch (questionNum) {
                     case 0:
-                        if (playerTeam.contentEquals(b2.getText())) {
+                        if (playerPosition.contentEquals(b2.getText())) {
                             Intent intent = new Intent(GameScreen.this, MainActivity.class);
                             startActivity(intent);
                         } else {
@@ -503,7 +494,7 @@ public class GameScreen extends AppCompatActivity {
             case R.id.answerC:
                 switch (questionNum) {
                     case 0:
-                        if (playerTeam.contentEquals(b3.getText())) {
+                        if (playerPosition.contentEquals(b3.getText())) {
                             Intent intent = new Intent(GameScreen.this, MainActivity.class);
                             startActivity(intent);
                         } else {
@@ -574,6 +565,7 @@ public class GameScreen extends AppCompatActivity {
                 break;
         }
     }
+    //class that stores the values of the manually added players from HashMap (passed into HashMap)
     public class Players {
         String player;
         String team;

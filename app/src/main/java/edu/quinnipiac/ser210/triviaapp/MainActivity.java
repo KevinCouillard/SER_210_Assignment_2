@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getPlayer() {
-       int playerNum = (int) (Math.random() * 500 + 1);
+       int playerNum = (int) (Math.random() * 450 + 1);
        String playerId = String.valueOf(playerNum);
        return playerId;
     }

@@ -1,5 +1,10 @@
 package edu.quinnipiac.ser210.triviaapp;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * PlayerHandler handles retrieving api data
+ */
 import android.util.Log;
 
 import org.json.JSONException;
@@ -8,8 +13,7 @@ import org.json.JSONObject;
 public class PlayerHandler {
 
     private static final int START_PLAYER = 0;
-    private static final int END_PLAYER= 3448;
-    public static final String PLAYER_NAME = "Player_Name";
+    private static final int END_PLAYER= 450;
     final public static String [] players = new String[END_PLAYER - START_PLAYER +1];
     public static String playerName = null;
     public static String playerHeight = null;
@@ -25,6 +29,7 @@ public class PlayerHandler {
     }
 
     public String getPlayer(String playerNameJsonStr) throws JSONException {
+        //gets the playerName (returns this), team, height, and position and stores the later 3 as static variables
         String playerTeam = null;
         String playerHeight = null;
         String playerPosition = null;
@@ -43,7 +48,6 @@ public class PlayerHandler {
         this.playerPosition = playerPosition;
 
         this.playerTeam = playerTeam.replaceAll("\\p{P}", "");
-       // this.playerTeam = playerTeam.replaceAll("\"", "");
         playerName = playerNameJSONObj.getString("first_name") + " " + playerNameJSONObj.getString("last_name");
         return playerName;
     }
