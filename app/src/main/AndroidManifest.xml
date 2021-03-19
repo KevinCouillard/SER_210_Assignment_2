@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TriviaApp">
         <activity android:name=".AboutPage"
-            android:label="AboutPge"
+            android:label="AboutPage"
             android:theme="@style/Theme.TriviaApp"
             android:parentActivityName=".MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -24,7 +24,11 @@
         <activity
             android:name=".GameScreen"
             android:label="GameScreen"
-            android:theme="@style/Theme.TriviaApp" />
+            android:theme="@style/Theme.TriviaApp"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

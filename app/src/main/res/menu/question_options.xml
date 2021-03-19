@@ -5,7 +5,7 @@
     <item android:id="@+id/info"
         android:title="About"
         android:icon="@drawable/ic_launcher_info_foreground"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         />
     <item android:id="@+id/menu_share"
         android:title="Share"
@@ -13,10 +13,12 @@
         app:showAsAction="always"
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
         />
+
     <item android:id="@+id/change_color"
         android:title="Settings"
         android:icon="@drawable/ic_launcher_settings"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         />
+
 
 </menu>

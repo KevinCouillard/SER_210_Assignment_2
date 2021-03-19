@@ -1,26 +1,24 @@
 package edu.quinnipiac.ser210.triviaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GameScreen extends AppCompatActivity {
     int questionNum = 0;
@@ -31,9 +29,11 @@ public class GameScreen extends AppCompatActivity {
     int score;
     String playerScore = "Current Score: " + score;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
 
         playerScore = (String) getIntent().getExtras().get("score");
@@ -382,6 +382,9 @@ public class GameScreen extends AppCompatActivity {
         TextView categoryName = (TextView) findViewById(R.id.categoryName);
         categoryName.setText(category);
 
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -395,7 +398,8 @@ public class GameScreen extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.change_color:
-                //options to change the background color
+                //changes color
+                Utils.changeToTheme(this, (int)(Math.random()*6));
                 break;
             case R.id.info:
                 //information about the developer
@@ -526,6 +530,8 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
+                Intent intent = new Intent(this,AboutPage.class);
+                startActivity(intent);
                 break;
             case R.id.answerD:
                 switch (questionNum) {
@@ -570,6 +576,8 @@ public class GameScreen extends AppCompatActivity {
         String team;
         String position;
         String height;
+        return super.onOptionsItemSelected(item);
+    }
 
         Players(String player, String team, String position, String height) {
             this.height = height;
@@ -578,4 +586,5 @@ public class GameScreen extends AppCompatActivity {
             this.player = player;
         }
     }
+
 }
