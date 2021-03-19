@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(findViewById(R.id.menu_share));
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu.findItem(R.id.action_share));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -65,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 //information about the developer
                 break;
-            case R.id.menu_share:
-                Intent intent2 = new Intent(Intent.ACTION_SEND);
-                intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
-                provider.setShareIntent(intent2);
-                startActivity(intent2);
+            case R.id.action_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
+                provider.setShareIntent(sharingIntent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
