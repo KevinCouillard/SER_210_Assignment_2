@@ -19,6 +19,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameScreen extends AppCompatActivity {
     int questionNum = 0;
@@ -530,8 +535,6 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
-                Intent intent = new Intent(this,AboutPage.class);
-                startActivity(intent);
                 break;
             case R.id.answerD:
                 switch (questionNum) {
@@ -576,8 +579,6 @@ public class GameScreen extends AppCompatActivity {
         String team;
         String position;
         String height;
-        return super.onOptionsItemSelected(item);
-    }
 
         Players(String player, String team, String position, String height) {
             this.height = height;
