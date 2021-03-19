@@ -1,5 +1,10 @@
 package edu.quinnipiac.ser210.triviaapp;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * MainActivity welcoming screen that prompts the user to pick a category (only one as of now)
+ */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,11 +31,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-    /*
-    String playerTeam;
-    String playerHeight;
-    String playerPosition;
-     */
     Button bPressed;
     PlayerHandler pHandler = new PlayerHandler();
     private String url1 = "https://free-nba.p.rapidapi.com/players/";
@@ -81,13 +81,10 @@ public class MainActivity extends AppCompatActivity {
     public void startGame(View view) {
         bPressed = (Button) view;
         new FetchPlayer().execute(this.getPlayer());
-        /*
-        Intent intent = new Intent(MainActivity.this,GameScreen.class);
-        startActivity(intent);
-         */
     }
 
     public String getPlayer() {
+        //gets a random id to index player from api
        int playerNum = (int) (Math.random() * 450 + 1);
        String playerId = String.valueOf(playerNum);
        return playerId;
@@ -104,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             String playerTeam;
 
             try {
+                //opens url connection
                 URL url = new URL(url1 + strings[0]);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -119,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 reader = new BufferedReader(new InputStreamReader(in));
                 player = getStringFromBuffer(reader);
 
-                Log.v("Player Name", player);
 
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Error" + e.getMessage());
@@ -143,18 +140,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             if (result != null)
                 Log.d(LOG_TAG,"Result is null");
-/*
-            String[] s = result.split(" ");
-            for (String a : s) {
-                Log.v("TeamSplit", a);
-                playerTeam = a;
-            }
-            result = result.replaceAll(playerTeam, "");
 
- */
-
-            //result = result.replaceAll("\\s+$", "");
-            //Log.v("Result", result);
+            //creates an intent to gameScreen and sends api values
             Intent intent = new Intent(MainActivity.this, GameScreen.class);
             intent.putExtra("player",result);
             intent.putExtra("player team",PlayerHandler.playerTeam);
@@ -176,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 bufferedReader.close();
                 return pHandler.getPlayer(buffer.toString());
-
-              //  return pHandler.getPlayerName(buffer.toString());
             } catch (Exception e) {
                 Log.e("MainActivity","Error" + e.getMessage());
                 return null;

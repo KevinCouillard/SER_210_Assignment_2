@@ -1,5 +1,10 @@
 package edu.quinnipiac.ser210.triviaapp;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * EndScreen shown when the player enters a wrong answer and prompts them to play again
+ */
 import android.content.Intent;
 import android.os.Bundle;
 

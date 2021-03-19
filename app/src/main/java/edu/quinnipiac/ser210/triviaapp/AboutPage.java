@@ -1,5 +1,10 @@
 package edu.quinnipiac.ser210.triviaapp;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * AboutPage screen reachable through the actionBar that gives a description of the app and authors
+ */
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +20,6 @@ public class AboutPage extends AppCompatActivity {
         setContentView(R.layout.activity_about_page);
 
         Intent intent = getIntent();
-        //setSupportActionBar(findViewById(R.id.toolbar2));
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
