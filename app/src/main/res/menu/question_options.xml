@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_launcher_info_foreground"
         app:showAsAction="always"
         />
-    <item android:id="+@id/menu_share"
+    <item android:id="@+id/menu_share"
         android:title="Share"
         android:icon="@drawable/ic_launcher_share_foreground"
         app:showAsAction="always"

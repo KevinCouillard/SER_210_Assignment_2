@@ -34,19 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="Press to play again!"
-        android:textSize="40dp"
-        android:onClick="buttonPress" />
-
-    <Button
-        android:id="@+id/changeCategoryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:text="Press to change the category!"
-        android:textSize="35dp"
+        android:textSize="50dp"
         android:onClick="buttonPress" />
 
 </LinearLayout>

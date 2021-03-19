@@ -14,7 +14,7 @@ public class AboutPage extends AppCompatActivity {
         setContentView(R.layout.activity_about_page);
 
         Intent intent = getIntent();
-        setSupportActionBar(findViewById(R.id.toolbar2));
+        //setSupportActionBar(findViewById(R.id.toolbar2));
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }

@@ -36,6 +36,7 @@
         android:layout_gravity="center">
 
         <Button
+            android:id="@+id/Players"
             android:layout_width="800dp"
             android:layout_height="100dp"
             android:layout_weight="1"
@@ -45,6 +46,7 @@
 
 
         <Button
+            android:id="@+id/Teams"
             android:layout_width="800dp"
             android:layout_height="100dp"
             android:layout_weight="1"
@@ -53,6 +55,7 @@
             android:onClick="startGame" />
 
         <Button
+            android:id="@+id/Games"
             android:layout_width="800dp"
             android:layout_height="100dp"
             android:layout_weight="1"
