@@ -1,10 +1,13 @@
 package edu.quinnipiac.ser210.triviaapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,11 +18,12 @@ import androidx.appcompat.widget.ShareActionProvider;
 public class MainActivity extends AppCompatActivity {
 
     private ShareActionProvider provider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
-        //setSupportActionBar(findViewById(R.id.toolbar));
     }
 
     @Override
@@ -34,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.change_color:
-                //options to change the background color
-                Utils.changeToTheme(this, 3);
+                //changes color
+                Utils.changeToTheme(this, (int)(Math.random()*2));
                 break;
             case R.id.info:
                 Intent intent = new Intent(MainActivity.this,AboutPage.class);

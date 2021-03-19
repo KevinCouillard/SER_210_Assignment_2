@@ -1,6 +1,8 @@
 package edu.quinnipiac.ser210.triviaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,14 +21,19 @@ import android.view.View;
 
 public class GameScreen extends AppCompatActivity {
 
+    private ActionBar actionBar;
+    private ColorDrawable colorDrawable;
+
     private ShareActionProvider provider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
 
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        colorDrawable = new ColorDrawable(Color.parseColor("#FF5733"));
     }
 
     @Override
@@ -41,7 +48,8 @@ public class GameScreen extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.change_color:
-                //options to change the background color
+                //changes color
+                Utils.changeToTheme(this, (int)(Math.random()*2));
                 break;
             case R.id.info:
                 Intent intent = new Intent(this,AboutPage.class);
