@@ -29,33 +29,17 @@
         android:textColor="@color/white"
         android:textSize="30dp" />
 
+    <fragment
+        class="edu.quinnipiac.ser210.triviaapp.MainFragment"
+        android:id="@+id/main_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TableLayout
+        android:id="@+id/fragment_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_gravity="center">
-
-        <Button
-            android:id="@+id/Players"
-            android:layout_width="800dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="Players"
-            android:textSize="30dp"
-            android:onClick="startGame" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Keep playing until you lose!"
-            android:textSize="40dp"
-            android:textColor="@color/white"
-            android:textAlignment="center" />
-
-    </TableLayout>
+        android:layout_gravity="center" />
 
 </LinearLayout>

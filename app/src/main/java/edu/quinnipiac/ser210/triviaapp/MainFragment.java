@@ -1,28 +1,18 @@
 package edu.quinnipiac.ser210.triviaapp;
-/**
- * Kevin Couillard & Hephzibah Rajan
- * SER 210 Assignment 2 TriviaApp
- * 3/18/21
- * MainActivity welcoming screen that prompts the user to pick a category (only one as of now)
- */
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ShareActionProvider;
-import androidx.core.view.MenuItemCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,74 +21,44 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainFragment extends Fragment implements View.OnClickListener {
     Button bPressed;
     PlayerHandler pHandler = new PlayerHandler();
     private String url1 = "https://free-nba.p.rapidapi.com/players/";
     private String LOG_TAG = MainActivity.class.getSimpleName();
-    private ShareActionProvider provider;
-
+    private MainActivity mainActivity = new MainActivity();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.onActivityCreateSetTheme(this);
-        setContentView(R.layout.activity_main);
-        View fragmentContainer = findViewById(R.id.fragment_container);
-        MainFragment main_frag = new MainFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, main_frag);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.question_options,menu);
-        provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem) menu.findItem(R.id.action_share));
-        return super.onCreateOptionsMenu(menu);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View layout = inflater.inflate(R.layout.fragment_main, container, false);
+        Button playerButton = (Button) layout.findViewById(R.id.Players);
+        playerButton.setOnClickListener(this);
+        TextView gameMessage = (TextView) layout.findViewById(R.id.Game_Message);
+        return layout;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.change_color:
-                //changes color
-                Utils.changeToTheme(this, (int)(Math.random()*6));
-                break;
-            case R.id.info:
-                Intent intent = new Intent(MainActivity.this, AboutPage.class);
-                startActivity(intent);
-                //information about the developer
-                break;
-            case R.id.action_share:
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT,"(EditText)findViewById(R.id.score).getText().toString");
-                provider.setShareIntent(sharingIntent);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-/*
-    public void startGame(View view) {
-        bPressed = (Button) view;
+    public void onClick(View v) {
+        //only one button
+        bPressed = (Button) v;
         new FetchPlayer().execute(this.getPlayer());
     }
-*/
+
     public String getPlayer() {
         //gets a random id to index player from api
-       int playerNum = (int) (Math.random() * 450 + 1);
-       String playerId = String.valueOf(playerNum);
-       return playerId;
+        int playerNum = (int) (Math.random() * 450 + 1);
+        String playerId = String.valueOf(playerNum);
+        return playerId;
     }
 
-/*
     class FetchPlayer extends AsyncTask<String,Void,String> {
         @Override
         protected String doInBackground(String... strings) {
@@ -150,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG,"Result is null");
 
             //creates an intent to gameScreen and sends api values
-            Intent intent = new Intent(MainActivity.this, GameScreen.class);
+            Intent intent = new Intent(mainActivity, GameScreen.class);
             intent.putExtra("player",result);
             intent.putExtra("player team",PlayerHandler.playerTeam);
             intent.putExtra("player height",PlayerHandler.playerHeight);
@@ -159,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
     private String getStringFromBuffer(BufferedReader bufferedReader) {
         StringBuffer buffer = new StringBuffer();
         String line;
@@ -178,6 +137,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return null;
     }
-
- */
 }
