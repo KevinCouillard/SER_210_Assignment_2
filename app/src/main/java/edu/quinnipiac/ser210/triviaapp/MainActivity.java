@@ -30,9 +30,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import androidx.fragment.app.ListFragment;
 
 public class MainActivity extends AppCompatActivity {
-    Button bPressed;
     PlayerHandler pHandler = new PlayerHandler();
     private String url1 = "https://free-nba.p.rapidapi.com/players/";
     private String LOG_TAG = MainActivity.class.getSimpleName();
@@ -85,12 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-/*
-    public void startGame(View view) {
-        bPressed = (Button) view;
-        new FetchPlayer().execute(this.getPlayer());
-    }
-*/
+
     public String getPlayer() {
         //gets a random id to index player from api
        int playerNum = (int) (Math.random() * 450 + 1);
@@ -98,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
        return playerId;
     }
 
-/*
+    public void itemClicked() {
+        new FetchPlayer().execute(this.getPlayer());
+    }
+
+
     class FetchPlayer extends AsyncTask<String,Void,String> {
         @Override
         protected String doInBackground(String... strings) {
@@ -155,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("player team",PlayerHandler.playerTeam);
             intent.putExtra("player height",PlayerHandler.playerHeight);
             intent.putExtra("player position",PlayerHandler.playerPosition);
-            intent.putExtra("category", bPressed.getText());
+            intent.putExtra("category", MainFragment.bPressed.getText());
             startActivity(intent);
         }
     }
@@ -179,5 +178,4 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
- */
 }
