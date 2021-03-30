@@ -7,10 +7,12 @@ package edu.quinnipiac.ser210.triviaapp;
  */
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 public class AboutPage extends AppCompatActivity {
 
@@ -22,6 +24,14 @@ public class AboutPage extends AppCompatActivity {
         Intent intent = getIntent();
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+
+        View fragmentContainer = findViewById(R.id.fragment_container);
+        AboutFragment about_frag = new AboutFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, about_frag);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
