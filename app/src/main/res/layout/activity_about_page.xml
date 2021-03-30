@@ -17,11 +17,15 @@
 
     <fragment
         class="edu.quinnipiac.ser210.triviaapp.AboutFragment"
-        android:id="@+id/fragment_container"
+        android:id="@+id/about_frag"
+        android:layout = "@layout/fragment_about"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
+<FrameLayout
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -87,7 +91,7 @@
             android:textAlignment="center"
             android:layout_centerInParent="true"/>
     </LinearLayout>
-
+</FrameLayout>
 
 
 </RelativeLayout>
