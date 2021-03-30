@@ -46,13 +46,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         mActivity = (MainActivity) context;
     }
 
-    /*
-    @Override
-    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        mActivity.itemClicked();
-    }
-*/
     @Override
     public void onClick(View v) {
         bPressed = (Button) v;
