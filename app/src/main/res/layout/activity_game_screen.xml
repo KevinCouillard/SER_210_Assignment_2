@@ -8,75 +8,19 @@
     android:background="@drawable/nba_trivia"
     tools:context=".GameScreen">
 
+    <fragment
+        class="edu.quinnipiac.ser210.triviaapp.GameFragmentOne"
+        android:id="@+id/game_frag_one"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Category: "
-        android:layout_marginLeft="20dp"
-        android:textSize="50dp"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:id="@+id/categoryName" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:text="Trivia Question"
-        android:textSize="30dp"
-        android:textColor="@color/white"
-        android:id="@+id/question" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Answer A"
-        android:textSize="20dp"
-        android:id="@+id/answerA"
-        android:onClick="chooseAnswer" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Answer B"
-        android:textSize="20dp"
-        android:id="@+id/answerB"
-        android:onClick="chooseAnswer" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Answer C"
-        android:textSize="20dp"
-        android:id="@+id/answerC"
-        android:onClick="chooseAnswer" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Answer D"
-        android:textSize="20dp"
-        android:id="@+id/answerD"
-        android:onClick="chooseAnswer" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:textSize="30dp"
-        android:text=""
-        android:textColor="@color/white"
-        android:id="@+id/Score" />
+    <fragment
+        class="edu.quinnipiac.ser210.triviaapp.GameFragmentTwo"
+        android:id="@+id/game_frag_two"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
 
 
 </LinearLayout>
+

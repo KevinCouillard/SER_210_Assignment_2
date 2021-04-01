@@ -12,7 +12,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +31,9 @@ public class GameScreen extends AppCompatActivity {
     String playerHeight;
     String playerPosition;
     ShareActionProvider provider;
+    GameFragmentOne frag_one_obj;
+    GameFragmentTwo frag_two_obj;
+    public Boolean isActive;
 
 
     @Override
@@ -37,7 +42,25 @@ public class GameScreen extends AppCompatActivity {
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
 
+        isActive = true;
+
         questionNum = ((int) (Math.random()*4));
+
+        //View textFragContainer = findViewById(R.id.text_container);
+        GameFragmentOne game_one_frag = new GameFragmentOne();
+        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+        //ft1.replace(R.id.text_container, game_one_frag);
+        ft1.addToBackStack(null);
+        ft1.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft1.commit();
+
+        //View buttonFragContainer = findViewById(R.id.button_container);
+        GameFragmentTwo game_two_frag = new GameFragmentTwo();
+        FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+        //ft2.replace(R.id.button_container, game_two_frag);
+        ft2.addToBackStack(null);
+        ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft2.commit();
 
         //random numbers used to fill false answers from HashMap values
         int ranB = ((int) (Math.random()*20));
@@ -81,9 +104,12 @@ public class GameScreen extends AppCompatActivity {
         triviaQuestions.add("What player plays on the " + playerTeam + "?");
         triviaQuestions.add("What position does " + player + " play?");
 
+        frag_one_obj = (GameFragmentOne) getSupportFragmentManager().findFragmentById(R.id.game_frag_one);
+        frag_two_obj = (GameFragmentTwo) getSupportFragmentManager().findFragmentById(R.id.game_frag_two);
+
         //Sets the textView displaying the question text to a random question
-        TextView question = (TextView) findViewById(R.id.question);
-        question.setText(triviaQuestions.get(questionNum));
+        frag_one_obj.setViewText(triviaQuestions.get(questionNum),2);
+
 
         Button answerA = (Button) findViewById(R.id.answerA);
         Button answerB = (Button) findViewById(R.id.answerB);
@@ -96,283 +122,282 @@ public class GameScreen extends AppCompatActivity {
                 //set button text to teams
                 int ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
-                    answerA.setText(playerTeam);
+                    frag_two_obj.setButtonText(playerTeam, 1);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranB).team);
+                    frag_two_obj.setButtonText(hMap.get(ranB).team, 2);
 
                     if (playerTeam.contentEquals(hMap.get(ranC).team)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).team);
+                    frag_two_obj.setButtonText(hMap.get(ranC).team, 3);
 
                     if (playerTeam.contentEquals(hMap.get(ranD).team)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).team);
+                    frag_two_obj.setButtonText(hMap.get(ranD).team, 4);
                 } else if (ranCorrect == 1) {
-                    answerB.setText(playerTeam);
+                    frag_two_obj.setButtonText(playerTeam, 2);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).team);
+                    frag_two_obj.setButtonText(hMap.get(ranB).team, 1);
 
                     if (playerTeam.contentEquals(hMap.get(ranC).team)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).team);
+                    frag_two_obj.setButtonText(hMap.get(ranC).team, 3);
 
                     if (playerTeam.contentEquals(hMap.get(ranD).team)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).team);
+                    frag_two_obj.setButtonText(hMap.get(ranD).team, 4);
                 } else if (ranCorrect == 2) {
-                    answerC.setText(playerTeam);
+                    frag_two_obj.setButtonText(playerTeam, 3);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).team);
+                    frag_two_obj.setButtonText(hMap.get(ranB).team, 1);
 
                     if (playerTeam.contentEquals(hMap.get(ranC).team)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranC).team);
+                    frag_two_obj.setButtonText(hMap.get(ranC).team, 2);
 
                     if (playerTeam.contentEquals(hMap.get(ranD).team)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).team);
+                    frag_two_obj.setButtonText(hMap.get(ranD).team, 4);
                 } else if (ranCorrect == 3) {
-                    answerD.setText(playerTeam);
+                    frag_two_obj.setButtonText(playerTeam, 4);
                     if (playerTeam.contentEquals(hMap.get(ranB).team)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).team);
+                    frag_two_obj.setButtonText(hMap.get(ranB).team, 1);
 
                     if (playerTeam.contentEquals(hMap.get(ranC).team)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).team);
+                    frag_two_obj.setButtonText(hMap.get(ranC).team, 3);
 
                     if (playerTeam.contentEquals(hMap.get(ranD).team)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranD).team);
+                    frag_two_obj.setButtonText(hMap.get(ranD).team, 2);
                 }
                 break;
             case 1:
                 //set button text to heights
                 ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
-                    answerA.setText(playerHeight);
+                    frag_two_obj.setButtonText(playerHeight, 1);
                     if (playerHeight.contentEquals(hMap.get(ranB).height)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranB).height);
+                    frag_two_obj.setButtonText(hMap.get(ranB).height, 2);
 
                     if (playerHeight.contentEquals(hMap.get(ranC).height)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).height);
+                    frag_two_obj.setButtonText(hMap.get(ranC).height, 3);
 
                     if (playerHeight.contentEquals(hMap.get(ranD).height)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).height);
+                    frag_two_obj.setButtonText(hMap.get(ranD).height, 4);
                 } else if (ranCorrect == 1) {
-                    answerB.setText(playerHeight);
+                    frag_two_obj.setButtonText(playerHeight, 2);
                     if (playerHeight.contentEquals(hMap.get(ranB).height)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).height);
+                    frag_two_obj.setButtonText(hMap.get(ranB).height, 1);
 
                     if (playerHeight.contentEquals(hMap.get(ranC).height)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).height);
+                    frag_two_obj.setButtonText(hMap.get(ranC).height, 3);
 
                     if (playerHeight.contentEquals(hMap.get(ranD).height)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).height);
+                    frag_two_obj.setButtonText(hMap.get(ranD).height, 4);
                 } else if (ranCorrect == 2) {
-                    answerC.setText(playerHeight);
+                    frag_two_obj.setButtonText(playerHeight, 3);
                     if (playerHeight.contentEquals(hMap.get(ranB).height)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).height);
+                    frag_two_obj.setButtonText(hMap.get(ranB).height, 1);
 
                     if (playerHeight.contentEquals(hMap.get(ranC).height)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranC).height);
+                    frag_two_obj.setButtonText(hMap.get(ranC).height, 2);
 
                     if (playerHeight.contentEquals(hMap.get(ranD).height)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).height);
+                    frag_two_obj.setButtonText(hMap.get(ranD).height, 4);
                 } else if (ranCorrect == 3) {
-                    answerD.setText(playerHeight);
+                    frag_two_obj.setButtonText(playerHeight, 4);
                     if (playerHeight.contentEquals(hMap.get(ranB).height)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).height);
+                    frag_two_obj.setButtonText(hMap.get(ranB).height, 1);
 
                     if (playerHeight.contentEquals(hMap.get(ranC).height)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).height);
+                    frag_two_obj.setButtonText(hMap.get(ranC).height, 3);
 
                     if (playerHeight.contentEquals(hMap.get(ranD).height)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranD).height);
+                    frag_two_obj.setButtonText(hMap.get(ranD).height, 2);
                 }
                 break;
             case 2:
                 //set button text to players
                 ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
-                    answerA.setText(player);
+                    frag_two_obj.setButtonText(player, 1);
                     if (player.contentEquals(hMap.get(ranB).player)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranB).player);
+                    frag_two_obj.setButtonText(hMap.get(ranB).player, 2);
 
                     if (player.contentEquals(hMap.get(ranC).player)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).player);
+                    frag_two_obj.setButtonText(hMap.get(ranC).player, 3);
 
                     if (player.contentEquals(hMap.get(ranD).player)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).player);
+                    frag_two_obj.setButtonText(hMap.get(ranD).player, 4);
                 } else if (ranCorrect == 1) {
-                    answerB.setText(player);
+                    frag_two_obj.setButtonText(player, 2);
                     if (player.contentEquals(hMap.get(ranB).player)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).player);
+                    frag_two_obj.setButtonText(hMap.get(ranB).player, 1);
 
                     if (player.contentEquals(hMap.get(ranC).player)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).player);
+                    frag_two_obj.setButtonText(hMap.get(ranC).player, 3);
 
                     if (player.contentEquals(hMap.get(ranD).player)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).player);
+                    frag_two_obj.setButtonText(hMap.get(ranD).player, 4);
                 } else if (ranCorrect == 2) {
-                    answerC.setText(player);
+                    frag_two_obj.setButtonText(player, 3);
                     if (player.contentEquals(hMap.get(ranB).player)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).player);
+                    frag_two_obj.setButtonText(hMap.get(ranB).player, 1);
 
                     if (player.contentEquals(hMap.get(ranC).player)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranC).player);
+                    frag_two_obj.setButtonText(hMap.get(ranC).player, 2);
 
                     if (player.contentEquals(hMap.get(ranD).player)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).player);
+                    frag_two_obj.setButtonText(hMap.get(ranD).player, 4);
                 } else if (ranCorrect == 3) {
-                    answerD.setText(player);
+                    frag_two_obj.setButtonText(player, 4);
                     if (player.contentEquals(hMap.get(ranB).player)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).player);
+                    frag_two_obj.setButtonText(hMap.get(ranB).player, 1);
 
                     if (player.contentEquals(hMap.get(ranC).player)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).player);
+                    frag_two_obj.setButtonText(hMap.get(ranC).player, 3);
 
                     if (player.contentEquals(hMap.get(ranD).player)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranD).player);
+                    frag_two_obj.setButtonText(hMap.get(ranD).player, 2);
                 }
                 break;
             case 3:
                 //set button text to position
                 ranCorrect = ((int) (Math.random()*4));
                 if (ranCorrect == 0) {
-                    answerA.setText(playerPosition);
+                    frag_two_obj.setButtonText(playerPosition, 1);
                     if (playerPosition.contentEquals(hMap.get(ranB).position)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranB).position);
+                    frag_two_obj.setButtonText(hMap.get(ranB).position, 2);
 
                     if (playerPosition.contentEquals(hMap.get(ranC).position)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).position);
+                    frag_two_obj.setButtonText(hMap.get(ranC).position, 3);
 
                     if (playerPosition.contentEquals(hMap.get(ranD).position)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).position);
+                    frag_two_obj.setButtonText(hMap.get(ranD).position, 4);
                 } else if (ranCorrect == 1) {
-                    answerB.setText(playerPosition);
+                    frag_two_obj.setButtonText(playerPosition, 2);
                     if (playerPosition.contentEquals(hMap.get(ranB).position)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).position);
+                    frag_two_obj.setButtonText(hMap.get(ranB).position, 1);
 
                     if (playerPosition.contentEquals(hMap.get(ranC).position)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).position);
+                    frag_two_obj.setButtonText(hMap.get(ranC).position, 3);
 
                     if (playerPosition.contentEquals(hMap.get(ranD).position)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).position);
+                    frag_two_obj.setButtonText(hMap.get(ranD).position, 4);
                 } else if (ranCorrect == 2) {
-                    answerC.setText(playerPosition);
+                    frag_two_obj.setButtonText(playerPosition, 3);
                     if (playerPosition.contentEquals(hMap.get(ranB).position)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).position);
+                    frag_two_obj.setButtonText(hMap.get(ranB).position, 1);
 
                     if (playerPosition.contentEquals(hMap.get(ranC).position)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranC).position);
+                    frag_two_obj.setButtonText(hMap.get(ranC).position, 2);
 
                     if (playerPosition.contentEquals(hMap.get(ranD).position)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerD.setText(hMap.get(ranD).position);
+                    frag_two_obj.setButtonText(hMap.get(ranD).position, 4);
                 } else if (ranCorrect == 3) {
-                    answerD.setText(playerPosition);
+                    frag_two_obj.setButtonText(playerPosition, 4);
                     if (playerPosition.contentEquals(hMap.get(ranB).position)) {
                         ranB = ((int) (Math.random() * 20));
                     }
-                    answerA.setText(hMap.get(ranB).position);
+                    frag_two_obj.setButtonText(hMap.get(ranB).position, 1);
 
                     if (playerPosition.contentEquals(hMap.get(ranC).position)) {
                         ranC = ((int) (Math.random() * 20));
                     }
-                    answerC.setText(hMap.get(ranC).position);
+                    frag_two_obj.setButtonText(hMap.get(ranC).position, 3);
 
                     if (playerPosition.contentEquals(hMap.get(ranD).position)) {
                         ranD = ((int) (Math.random() * 20));
                     }
-                    answerB.setText(hMap.get(ranD).position);
+                    frag_two_obj.setButtonText(hMap.get(ranD).position, 2);
                 }
                 break;
         }
 
         //sets category name based on category clicked (was more categories now just one)
-        TextView categoryName = (TextView) findViewById(R.id.categoryName);
-        categoryName.setText(category);
+        frag_one_obj.setViewText("Category: " + category,1);
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -412,15 +437,16 @@ public class GameScreen extends AppCompatActivity {
 
     }
 
-    public void chooseAnswer(View view) {
-        int id = view.getId();
+
+    public void chooseAnswer() {
+        //int id = view.getId();
         questionNum = ((int) Math.random()*4);
         Button b1 = findViewById(R.id.answerA);
         Button b2 = findViewById(R.id.answerB);
         Button b3 = findViewById(R.id.answerC);
         Button b4 = findViewById(R.id.answerD);
 
-        switch (id) {
+        switch (frag_two_obj.buttonPressed) {
             case R.id.answerA:
                 switch (questionNum) {
                     //For some reason only the position registers if the correct answer is chosen (something to do with the check to see if strings are equal b/c position is char not string)
@@ -458,6 +484,7 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
+                isActive = false;
                 break;
             case R.id.answerB:
                 switch (questionNum) {
@@ -494,6 +521,7 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
+                isActive = false;
                 break;
             case R.id.answerC:
                 switch (questionNum) {
@@ -530,6 +558,7 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
+                isActive = false;
                 break;
             case R.id.answerD:
                 switch (questionNum) {
@@ -566,9 +595,12 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
+                isActive = false;
                 break;
         }
+
     }
+
     //class that stores the values of the manually added players from HashMap (passed into HashMap)
     public class Players {
         String player;
