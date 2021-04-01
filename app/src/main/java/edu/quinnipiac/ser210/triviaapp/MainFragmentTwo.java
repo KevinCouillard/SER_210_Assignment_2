@@ -11,7 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * MainFragmnetTwo handles the team category Button
+ */
 public class MainFragmentTwo extends Fragment implements View.OnClickListener {
     private MainActivity mActivity;
 

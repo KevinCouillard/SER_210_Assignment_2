@@ -10,7 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * MainFragmnetOne handles the answer buttons
+ */
 public class GameFragmentTwo extends Fragment implements View.OnClickListener {
     Button answerA;
     Button answerB;

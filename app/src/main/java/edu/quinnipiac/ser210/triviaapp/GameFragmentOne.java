@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * GameFragmentOne handles the textViews (category & question)
+ */
 public class GameFragmentOne extends Fragment {
     TextView category;
     TextView triviaQuestion;
-    String categoryName;
     String questionText;
 
     public GameFragmentOne() {
@@ -46,6 +50,7 @@ public class GameFragmentOne extends Fragment {
     }
 
     public void setViewText(String text,int view) {
+        //sets the text in textViews (had to change for landscape implem. and now this really does nothing)
         switch (view) {
             case 1:
 

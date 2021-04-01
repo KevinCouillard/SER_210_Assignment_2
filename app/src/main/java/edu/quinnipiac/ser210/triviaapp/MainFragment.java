@@ -17,9 +17,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-
-
+/**
+ * Kevin Couillard & Hephzibah Rajan
+ * SER 210 Assignment 2 TriviaApp
+ * 3/18/21
+ * MainFragmnet handles textView and player category button of mainActivity
+ */
 public class MainFragment extends Fragment implements View.OnClickListener {
     public static Button bPressed;
     private MainActivity mActivity;

@@ -43,18 +43,14 @@ public class GameScreen extends AppCompatActivity {
 
         questionNum = ((int) (Math.random()*4));
 
-        //View textFragContainer = findViewById(R.id.text_container);
         GameFragmentOne game_one_frag = new GameFragmentOne();
         FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
-        //ft1.replace(R.id.text_container, game_one_frag);
         ft1.addToBackStack(null);
         ft1.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft1.commit();
 
-        //View buttonFragContainer = findViewById(R.id.button_container);
         GameFragmentTwo game_two_frag = new GameFragmentTwo();
         FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
-        //ft2.replace(R.id.button_container, game_two_frag);
         ft2.addToBackStack(null);
         ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft2.commit();
@@ -434,166 +430,6 @@ public class GameScreen extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
-
-    }
-
-
-    public void chooseAnswer() {
-        //int id = view.getId();
-        questionNum = ((int) Math.random()*4);
-        Button b1 = findViewById(R.id.answerA);
-        Button b2 = findViewById(R.id.answerB);
-        Button b3 = findViewById(R.id.answerC);
-        Button b4 = findViewById(R.id.answerD);
-
-        switch (frag_two_obj.buttonPressed) {
-            case R.id.answerA:
-                switch (questionNum) {
-                    //For some reason only the position registers if the correct answer is chosen (something to do with the check to see if strings are equal b/c position is char not string)
-                    //Have tried b2.getText().toString().equalsIgnoreCase(playerTeam) as well as using .equals and .contentEquals with no luck
-                    case 0:
-                        if (playerPosition.contentEquals(b1.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 1:
-                        if (playerHeight.contentEquals(b1.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 2:
-                        if (player.contentEquals(b1.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 3:
-                        if (playerPosition.contentEquals(b1.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                }
-                break;
-            case R.id.answerB:
-                switch (questionNum) {
-                    case 0:
-                        if (playerPosition.contentEquals(b2.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 1:
-                        if (playerHeight.contentEquals(b2.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 2:
-                        if (player.contentEquals(b2.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 3:
-                        if (playerPosition.contentEquals(b2.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                }
-                break;
-            case R.id.answerC:
-                switch (questionNum) {
-                    case 0:
-                        if (playerPosition.contentEquals(b3.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 1:
-                        if (playerHeight.contentEquals(b3.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 2:
-                        if (player.contentEquals(b3.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 3:
-                        if (playerPosition.contentEquals(b3.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                }
-                break;
-            case R.id.answerD:
-                switch (questionNum) {
-                    case 0:
-                        if (playerTeam.contentEquals(b4.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 1:
-                        if (playerHeight.contentEquals(b4.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 2:
-                        if (player.contentEquals(b4.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                    case 3:
-                        if (playerPosition.contentEquals(b4.getText())) {
-                            Intent intent = new Intent(GameScreen.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent2 = new Intent(GameScreen.this, EndScreen.class);
-                            startActivity(intent2);
-                        }
-                }
-                break;
-        }
 
     }
 
