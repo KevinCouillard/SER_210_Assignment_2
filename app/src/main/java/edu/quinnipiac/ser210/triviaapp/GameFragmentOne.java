@@ -44,7 +44,11 @@ public class GameFragmentOne extends Fragment {
                 category.setText(text);
                 break;
             case 2:
-                triviaQuestion.setText(text);
+                if (MainFragment.bPressed.getText().equals("Teams")) {
+                    triviaQuestion.setText("Not yet completed");
+                } else {
+                    triviaQuestion.setText(text);
+                }
                 break;
         }
     }

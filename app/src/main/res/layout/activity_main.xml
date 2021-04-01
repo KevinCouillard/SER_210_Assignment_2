@@ -34,6 +34,11 @@
         class="edu.quinnipiac.ser210.triviaapp.MainFragment"
         android:id="@+id/main_frag"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <fragment
+        class="edu.quinnipiac.ser210.triviaapp.MainFragmentTwo"
+        android:id="@+id/main_frag_two"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 

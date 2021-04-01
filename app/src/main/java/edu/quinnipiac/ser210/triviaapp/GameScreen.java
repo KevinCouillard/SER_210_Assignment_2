@@ -33,7 +33,6 @@ public class GameScreen extends AppCompatActivity {
     ShareActionProvider provider;
     GameFragmentOne frag_one_obj;
     GameFragmentTwo frag_two_obj;
-    public Boolean isActive;
 
 
     @Override
@@ -41,8 +40,6 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_game_screen);
-
-        isActive = true;
 
         questionNum = ((int) (Math.random()*4));
 
@@ -106,6 +103,9 @@ public class GameScreen extends AppCompatActivity {
 
         frag_one_obj = (GameFragmentOne) getSupportFragmentManager().findFragmentById(R.id.game_frag_one);
         frag_two_obj = (GameFragmentTwo) getSupportFragmentManager().findFragmentById(R.id.game_frag_two);
+
+        //sets category name based on category clicked (was more categories now just one)
+        frag_one_obj.setViewText("Category: " + category,1);
 
         //Sets the textView displaying the question text to a random question
         frag_one_obj.setViewText(triviaQuestions.get(questionNum),2);
@@ -397,9 +397,6 @@ public class GameScreen extends AppCompatActivity {
                 break;
         }
 
-        //sets category name based on category clicked (was more categories now just one)
-        frag_one_obj.setViewText("Category: " + category,1);
-
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
@@ -485,7 +482,6 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
-                isActive = false;
                 break;
             case R.id.answerB:
                 switch (questionNum) {
@@ -522,7 +518,6 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
-                isActive = false;
                 break;
             case R.id.answerC:
                 switch (questionNum) {
@@ -559,7 +554,6 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
-                isActive = false;
                 break;
             case R.id.answerD:
                 switch (questionNum) {
@@ -596,7 +590,6 @@ public class GameScreen extends AppCompatActivity {
                             startActivity(intent2);
                         }
                 }
-                isActive = false;
                 break;
         }
 

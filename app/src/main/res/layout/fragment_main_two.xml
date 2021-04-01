@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragmentTwo">
+
+    <TextView
+        android:id="@+id/Game_Message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Keep playing until you lose!"
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/Teams"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Teams"
+        android:textSize="30dp" />
+
+</FrameLayout>

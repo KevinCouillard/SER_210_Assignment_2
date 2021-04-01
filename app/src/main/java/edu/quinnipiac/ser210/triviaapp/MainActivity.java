@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+
+        MainFragment main_frag_two = new MainFragment();
+        FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+        ft2.addToBackStack(null);
+        ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft2.commit();
     }
 
     @Override
@@ -149,13 +155,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG,"Result is null");
 
             //creates an intent to gameScreen and sends api values
-            Intent intent = new Intent(MainActivity.this, GameScreen.class);
-            intent.putExtra("player",result);
-            intent.putExtra("player team",PlayerHandler.playerTeam);
-            intent.putExtra("player height",PlayerHandler.playerHeight);
-            intent.putExtra("player position",PlayerHandler.playerPosition);
-            intent.putExtra("category", MainFragment.bPressed.getText());
-            startActivity(intent);
+            if (MainFragment.bPressed == findViewById(R.id.Players)) {
+                Intent intent = new Intent(MainActivity.this, GameScreen.class);
+                intent.putExtra("player",result);
+                intent.putExtra("player team",PlayerHandler.playerTeam);
+                intent.putExtra("player height",PlayerHandler.playerHeight);
+                intent.putExtra("player position",PlayerHandler.playerPosition);
+                intent.putExtra("category", MainFragment.bPressed.getText());
+                startActivity(intent);
+            } else if (MainFragment.bPressed == findViewById(R.id.Teams)) {
+                Intent intent = new Intent(MainActivity.this, GameScreen.class);
+                intent.putExtra("player",result);
+                intent.putExtra("player team",PlayerHandler.playerTeam);
+                intent.putExtra("player height",PlayerHandler.playerHeight);
+                intent.putExtra("player position",PlayerHandler.playerPosition);
+                intent.putExtra("category", MainFragment.bPressed.getText());
+                startActivity(intent);
+            }
         }
     }
 

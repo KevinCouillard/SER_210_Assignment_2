@@ -218,16 +218,32 @@ public class GameFragmentTwo extends Fragment implements View.OnClickListener {
     public void setButtonText(String text,int button) {
         switch (button) {
             case 1:
-                answerA.setText(text);
+                if (MainFragment.bPressed.getText().equals("Teams")) {
+                    answerA.setText("Not yet completed");
+                } else {
+                    answerA.setText(text);
+                }
                 break;
             case 2:
-                answerB.setText(text);
+                if (MainFragment.bPressed.getText().equals("Teams")) {
+                    answerB.setText("Not yet completed");
+                } else {
+                    answerB.setText(text);
+                }
                 break;
             case 3:
-                answerC.setText(text);
+                if (MainFragment.bPressed.getText().equals("Teams")) {
+                    answerC.setText("Not yet completed");
+                } else {
+                    answerC.setText(text);
+                }
                 break;
             case 4:
-                answerD.setText(text);
+                if (MainFragment.bPressed.getText().equals("Teams")) {
+                    answerD.setText("Not yet completed");
+                } else {
+                    answerD.setText(text);
+                }
                 break;
         }
     }

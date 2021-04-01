@@ -5,19 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
-        <TextView
-            android:id="@+id/Game_Message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Keep playing until you lose!"
-            android:textSize="40dp"
-            android:textColor="@color/white"
-            android:textAlignment="center" />
-
         <Button
             android:id="@+id/Players"
             android:layout_width="match_parent"
