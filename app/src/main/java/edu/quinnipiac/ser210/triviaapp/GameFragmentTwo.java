@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.triviaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,11 @@ public class GameFragmentTwo extends Fragment implements View.OnClickListener {
     Button answerC;
     Button answerD;
     int buttonPressed;
+    String playerName;
+    String playerPosition;
+    String playerTeam;
+    String playerHeight;
+    int questionNum = 0;
 
     public GameFragmentTwo() {
         // Required empty public constructor
@@ -46,35 +52,167 @@ public class GameFragmentTwo extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        questionNum = ((int) Math.random()*4);
+        Button b1 = answerA;
+        Button b2 = answerB;
+        Button b3 = answerC;
+        Button b4 = answerD;
+
+        switch (v.getId()) {
             case R.id.answerA:
-                buttonPressed = 1;
+                switch (questionNum) {
+                    //For some reason only the position registers if the correct answer is chosen (something to do with the check to see if strings are equal b/c position is char not string)
+                    //Have tried b2.getText().toString().equalsIgnoreCase(playerTeam) as well as using .equals and .contentEquals with no luck
+                    case 0:
+                        if (playerPosition.contentEquals(b1.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 1:
+                        if (playerHeight.contentEquals(b1.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 2:
+                        if (playerName.contentEquals(b1.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 3:
+                        if (playerPosition.contentEquals(b1.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                }
+                break;
             case R.id.answerB:
-                buttonPressed = 2;
+                switch (questionNum) {
+                    case 0:
+                        if (playerPosition.contentEquals(b2.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 1:
+                        if (playerHeight.contentEquals(b2.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 2:
+                        if (playerName.contentEquals(b2.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 3:
+                        if (playerPosition.contentEquals(b2.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                }
+                break;
             case R.id.answerC:
-                buttonPressed = 3;
+                switch (questionNum) {
+                    case 0:
+                        if (playerPosition.contentEquals(b3.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 1:
+                        if (playerHeight.contentEquals(b3.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 2:
+                        if (playerName.contentEquals(b3.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 3:
+                        if (playerPosition.contentEquals(b3.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                }
+                break;
             case R.id.answerD:
-                buttonPressed = 4;
+                switch (questionNum) {
+                    case 0:
+                        if (playerTeam.contentEquals(b4.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 1:
+                        if (playerHeight.contentEquals(b4.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 2:
+                        if (playerName.contentEquals(b4.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                    case 3:
+                        if (playerPosition.contentEquals(b4.getText())) {
+                            Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent2 = new Intent(this.getActivity(), EndScreen.class);
+                            startActivity(intent2);
+                        }
+                }
+                break;
         }
+
     }
-    public int getButtonPressed() {
-        View bPressed = null;
-        switch (buttonPressed) {
-            case 1:
-                Log.v("button pressed","hello");
-                bPressed = answerA;
-                break;
-            case 2:
-                bPressed = answerB;
-                break;
-            case 3:
-                bPressed = answerC;
-                break;
-            case 4:
-                bPressed = answerD;
-                break;
-        }
-        return bPressed.getId();
+    public void setValues(String pN,String pP,String pT,String pH) {
+        playerName = pN;
+        playerHeight = pH;
+        playerPosition = pP;
+        playerTeam = pT;
     }
 
     public void setButtonText(String text,int button) {

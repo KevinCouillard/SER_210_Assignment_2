@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
-        View fragmentContainer = findViewById(R.id.fragment_container);
+        //View fragmentContainer = findViewById(R.id.fragment_container);
         MainFragment main_frag = new MainFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, main_frag);
+        //ft.replace(R.id.fragment_container, main_frag);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();

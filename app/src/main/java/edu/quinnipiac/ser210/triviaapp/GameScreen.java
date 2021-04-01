@@ -109,6 +109,7 @@ public class GameScreen extends AppCompatActivity {
 
         //Sets the textView displaying the question text to a random question
         frag_one_obj.setViewText(triviaQuestions.get(questionNum),2);
+        frag_two_obj.setValues(player,playerPosition,playerTeam,playerHeight);
 
 
         Button answerA = (Button) findViewById(R.id.answerA);
