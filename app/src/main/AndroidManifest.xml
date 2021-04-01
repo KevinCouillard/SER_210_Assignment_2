@@ -13,6 +13,7 @@
         <activity android:name=".AboutPage"
             android:label="AboutPage"
             android:theme="@style/Theme.TriviaApp"
+            android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
@@ -20,16 +21,19 @@
         <activity
             android:name=".EndScreen"
             android:label="@string/title_activity_end_screen"
+            android:screenOrientation="sensor"
             android:theme="@style/Theme.TriviaApp" />
         <activity
             android:name=".GameScreen"
             android:label="GameScreen"
             android:theme="@style/Theme.TriviaApp"
+            android:screenOrientation="sensor"
             android:parentActivityName=".MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="sensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

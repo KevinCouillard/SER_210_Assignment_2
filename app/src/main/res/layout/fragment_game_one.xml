@@ -10,24 +10,22 @@
         android:id="@+id/categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:gravity="center"
         android:text="Category: "
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50dp" />
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="Trivia Question"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
 
 </FrameLayout>

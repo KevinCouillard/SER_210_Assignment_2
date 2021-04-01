@@ -30,6 +30,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+
 import androidx.fragment.app.ListFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private String url1 = "https://free-nba.p.rapidapi.com/players/";
     private String LOG_TAG = MainActivity.class.getSimpleName();
     private ShareActionProvider provider;
+
+    //Backup ArrayList used to hold the questions asked (used for the landscape view to set fragment question)
+    public static ArrayList<String> triviaQuestions = new ArrayList<String>();
+    public static int ranNum;
 
 
     @Override
@@ -57,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         ft2.addToBackStack(null);
         ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft2.commit();
+
+        ranNum = ((int) (Math.random()*4));
     }
 
     @Override
@@ -152,25 +160,57 @@ public class MainActivity extends AppCompatActivity {
         }
         protected void onPostExecute(String result) {
             if (result != null)
-                Log.d(LOG_TAG,"Result is null");
+                Log.d(LOG_TAG, "Result is null");
 
+            triviaQuestions.add("What team does " + PlayerHandler.playerName + " play for?");
+            triviaQuestions.add("What height is " + PlayerHandler.playerName + "?");
+            triviaQuestions.add("What player plays on the " + PlayerHandler.playerTeam + "?");
+            triviaQuestions.add("What position does " + PlayerHandler.playerName + " play?");
             //creates an intent to gameScreen and sends api values
-            if (MainFragment.bPressed == findViewById(R.id.Players)) {
-                Intent intent = new Intent(MainActivity.this, GameScreen.class);
-                intent.putExtra("player",result);
-                intent.putExtra("player team",PlayerHandler.playerTeam);
-                intent.putExtra("player height",PlayerHandler.playerHeight);
-                intent.putExtra("player position",PlayerHandler.playerPosition);
-                intent.putExtra("category", MainFragment.bPressed.getText());
-                startActivity(intent);
-            } else if (MainFragment.bPressed == findViewById(R.id.Teams)) {
-                Intent intent = new Intent(MainActivity.this, GameScreen.class);
-                intent.putExtra("player",result);
-                intent.putExtra("player team",PlayerHandler.playerTeam);
-                intent.putExtra("player height",PlayerHandler.playerHeight);
-                intent.putExtra("player position",PlayerHandler.playerPosition);
-                intent.putExtra("category", MainFragment.bPressed.getText());
-                startActivity(intent);
+            View fragmentContainer = findViewById(R.id.fragment_container);
+           // View fragmentContainer2 = findViewById(R.id.fragment_container_two);
+            if (fragmentContainer != null) {
+                GameFragmentOne frag1 = new GameFragmentOne();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container, frag1);
+                ft.addToBackStack(null);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.commit();
+                frag1.setViewText("Category: " + MainFragment.bPressed.getText(), 1);
+                frag1.setViewText(triviaQuestions.get(ranNum), 2);
+
+                /*
+                GameFragmentTwo frag2 = new GameFragmentTwo();
+                FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+                ft2.replace(R.id.fragment_container_two, frag2);
+                ft2.addToBackStack(null);
+                ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft2.commit();
+                frag2.setValues(PlayerHandler.playerName,PlayerHandler.playerPosition,PlayerHandler.playerTeam,PlayerHandler.playerHeight);
+
+                frag2.setButtonText("Not implemented",1);
+                frag2.setButtonText("Because the text",2);
+                frag2.setButtonText("Was too hard/long to get",3);
+                frag2.setButtonText("So just shows the implementation working",4);
+                 */
+            } else {
+                if (MainFragment.bPressed == findViewById(R.id.Players)) {
+                    Intent intent = new Intent(MainActivity.this, GameScreen.class);
+                    intent.putExtra("player", result);
+                    intent.putExtra("player team", PlayerHandler.playerTeam);
+                    intent.putExtra("player height", PlayerHandler.playerHeight);
+                    intent.putExtra("player position", PlayerHandler.playerPosition);
+                    intent.putExtra("category", MainFragment.bPressed.getText());
+                    startActivity(intent);
+                } else if (MainFragment.bPressed == findViewById(R.id.Teams)) {
+                    Intent intent = new Intent(MainActivity.this, GameScreen.class);
+                    intent.putExtra("player", result);
+                    intent.putExtra("player team", PlayerHandler.playerTeam);
+                    intent.putExtra("player height", PlayerHandler.playerHeight);
+                    intent.putExtra("player position", PlayerHandler.playerPosition);
+                    intent.putExtra("category", MainFragment.bPressed.getText());
+                    startActivity(intent);
+                }
             }
         }
     }

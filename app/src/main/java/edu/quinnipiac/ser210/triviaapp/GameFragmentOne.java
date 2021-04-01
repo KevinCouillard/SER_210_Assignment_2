@@ -15,6 +15,8 @@ import android.widget.TextView;
 public class GameFragmentOne extends Fragment {
     TextView category;
     TextView triviaQuestion;
+    String categoryName;
+    String questionText;
 
     public GameFragmentOne() {
         // Required empty public constructor
@@ -33,21 +35,28 @@ public class GameFragmentOne extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_game_one, container, false);
         category = (TextView) layout.findViewById(R.id.categoryName);
+        category.setText("Category: " + MainFragment.bPressed.getText());
         triviaQuestion = (TextView) layout.findViewById(R.id.question);
-        //sets category name based on category clicked (was more categories now just one)
+        if (MainFragment.bPressed.getText().equals("Teams")) {
+            triviaQuestion.setText("Not yet completed");
+        } else {
+            triviaQuestion.setText(MainActivity.triviaQuestions.get(MainActivity.ranNum));
+        }
         return layout;
     }
 
     public void setViewText(String text,int view) {
         switch (view) {
             case 1:
-                category.setText(text);
+
                 break;
             case 2:
                 if (MainFragment.bPressed.getText().equals("Teams")) {
-                    triviaQuestion.setText("Not yet completed");
+                    //triviaQuestion.setText("Not yet completed");
+                    questionText = "Not yet completed";
                 } else {
-                    triviaQuestion.setText(text);
+                    questionText = text;
+                    //triviaQuestion.setText(text);
                 }
                 break;
         }

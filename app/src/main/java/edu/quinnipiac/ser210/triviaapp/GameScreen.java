@@ -25,14 +25,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameScreen extends AppCompatActivity {
-    int questionNum = 0;
+    static int questionNum = 0;
     String player;
     String playerTeam;
     String playerHeight;
     String playerPosition;
     ShareActionProvider provider;
-    GameFragmentOne frag_one_obj;
-    GameFragmentTwo frag_two_obj;
+    static GameFragmentOne frag_one_obj;
+    static GameFragmentTwo frag_two_obj;
 
 
     @Override
@@ -105,10 +105,12 @@ public class GameScreen extends AppCompatActivity {
         frag_two_obj = (GameFragmentTwo) getSupportFragmentManager().findFragmentById(R.id.game_frag_two);
 
         //sets category name based on category clicked (was more categories now just one)
-        frag_one_obj.setViewText("Category: " + category,1);
+        frag_one_obj.setViewText(category,1);
 
         //Sets the textView displaying the question text to a random question
         frag_one_obj.setViewText(triviaQuestions.get(questionNum),2);
+
+
         frag_two_obj.setValues(player,playerPosition,playerTeam,playerHeight);
 
 
